@@ -20,7 +20,8 @@ bool Thread::is_joinable()
 {
     return true;
 }
-~Thread::Thread()
+
+Thread::~Thread()
 {
     printf("Thread instance was destructed");
 }

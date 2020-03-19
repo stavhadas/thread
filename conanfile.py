@@ -8,14 +8,15 @@ class ThreadConan(ConanFile):
     author = "Stav Hadas"
     url = "https://github.com/stavhadas/thread.git"
     description = "<Description of Thread here>"
-    settings = "os", "compiler", "build_type", "arch", "platform"
+    settings = "os", "compiler", "build_type", "arch"
+    options = {"platform" : ["Windows", "Linux"]}
 
     def source(self):
         self.run("git clone {0}".format(self.url))
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder=".")
+        cmake.configure(source_folder="thread")
         cmake.build()
 
     def package(self):
