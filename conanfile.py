@@ -5,21 +5,17 @@ class ThreadConan(ConanFile):
     name = "Thread"
     version = "1.0"
     license = "<Put the package license here>"
-    author = "<Put your name here> <And your email here>"
-    url = "<Package recipe repository url here, for issues about the package>"
+    author = "Stav Hadas"
+    url = "https://github.com/stavhadas/thread.git"
     description = "<Description of Thread here>"
-    topics = ("<Put some tag here>", "<here>", "<and here>")
     settings = "os", "compiler", "build_type", "arch", "platform"
-    options = {"shared": [True, False]}
-    default_options = {"shared": False}
-    generators = "cmake"
 
     def source(self):
-        self.run("git clone https://github.com/stavhadas/thread.git")
+        self.run("git clone {0}".format(self.url))
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder="src")
+        cmake.configure(source_folder=".")
         cmake.build()
 
     def package(self):
